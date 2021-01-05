@@ -1,0 +1,93 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	font-family: 'Montserrat', sans-serif;
+	background-color: #f2f2f2;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	font-style: normal;
+	font-weight: 200;
+}
+.container
+{
+	border: solid 1px red;
+	width: 70%;
+	height: 50%;
+	margin: 20%;
+	display: block;
+	top: -15%;
+	position: absolute;
+	background: #f2f2f2;
+	
+}
+
+.footer
+{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	
+}
+.footer2
+{
+	
+	width: 70%;
+	margin: 0 auto;
+	text-align: center;
+	
+ 	
+
+}
+
+
+header {
+	width: 100%;
+	height: 250px;
+	position: relative;
+	background-color: #38408f;
+	border-bottom: 1px solid #000000;
+}
+.logo{
+    float: top;
+    width: 170px;
+    padding: 10px;
+	margin-left: 20%;
+}
+nav {
+	float: right;
+	width: 50%;
+	text-align: right;
+	margin-right: 25px;
+}
+p {
+	padding-left:22px;
+		
+}
+h1 {
+	padding-left: 22px
+}
+
+header nav ul {
+	list-style: none;
+	float: right;
+	margin-right: 20%;
+}
+nav ul li {
+	float: left;
+	color: #FFFFFF;
+	font-size: 14px;
+	text-align: left;
+	margin-right: 25px;
+	letter-spacing: 2px;
+	font-weight: bold;
+	list-style-type: none;
+}
+ul li a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+ul li:hover a {
+	color: #6eb3e3;
+}
