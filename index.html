@@ -1,0 +1,185 @@
+<html>
+  <head>
+    <title>My leaflet map</title>
+    <link rel="stylesheet" href="main.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </head>
+  <body>
+    <h1>Example</h1>
+    <div id="map"></div>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-hash/0.2.1/leaflet-hash.js"></script>
+
+    <script>
+      //initialize the map
+      const map = L.map("map").setView([52.3565, 5.2231], 13);
+
+      //Create baselayer - tiles
+      const backgroundMap = L.tileLayer(
+        "http://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+        {
+          attribution:
+            '<a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+          maxZoom: 19,
+        }
+      );
+
+      backgroundMap.addTo(map);
+
+      //Coordinaten in de URL
+      const hash = new L.Hash(map);
+
+      //Markers
+      let aeres = L.marker([52.3565, 5.2231]).addTo(map);
+      let kasteel = L.marker([52.34820277927972, 5.24731208259545]).addTo(map);
+      let station = L.marker([52.37513942518906, 5.218443881468747]).addTo(map);
+      let busstation = L.marker([52.354032847382605, 5.211329757305639]).addTo(
+        map
+      );
+
+      // Pop-ups
+      let popupaeres = "Aeres";
+      aeres.bindPopup(popupaeres);
+      let popupkasteel = "Kasteel";
+      kasteel.bindPopup(popupkasteel);
+      let popupstation = "Station";
+      station.bindPopup(popupstation);
+      let popupbusstation = "Busstation";
+      busstation.bindPopup(popupbusstation);
+
+      // Cirkel in het water
+      let circleinhetwater = L.circle(
+        [52.36302203733497, 5.220779150406941],
+        500,
+        {
+          color: "blue",
+          fillColor: "blue",
+          fillOpacity: 0.3,
+        }
+      ).addTo(map);
+
+      // Polygon die de punten verbindt
+      let polygon = L.polygon([
+        [
+          [52.3565, 5.2231],
+          [52.34820277927972, 5.24731208259545],
+          [52.37513942518906, 5.218443881468747],
+          [52.354032847382605, 5.211329757305639],
+        ],
+      ]).addTo(map);
+
+      const myGeojson = {
+ "type": "FeatureCollection",
+  "features": [
+  {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          [
+            5.177613753656203,
+            52.343446901270454
+          ],
+          [
+            5.2107823284798656,
+            52.3542763623507
+          ],
+          [
+            5.22546517957025,
+            52.35392528996991
+          ],
+          [
+            5.241870074849061,
+            52.352525623362965
+          ],
+          [
+            5.259978317448457,
+            52.35648648195402
+          ],
+          [
+            5.277714452936095,
+            52.36405506409059
+          ],
+          [
+            5.289729516933107,
+            52.37464970712901
+          ],
+          [
+            5.266269355718549,
+            52.38035206879994
+          ],
+          [
+            5.2471970980801075,
+            52.39535980723855
+          ],
+          [
+            5.242620558096121,
+            52.397336664453775
+          ],
+          [
+            5.215168576423224,
+            52.389309721280426
+          ],
+          [
+            5.203538584430049,
+            52.38802717769363
+          ],
+          [
+            5.19534183382973,
+            52.38744873657549
+          ],
+          [
+            5.179325657021025,
+            52.37953753434451
+          ],
+          [
+            5.17227047276441,
+            52.37464912969807
+          ],
+          [
+            5.169799310198755,
+            52.36335682314544
+          ],
+          [
+            5.173226045089336,
+            52.35497336941063
+          ],
+          [
+            5.173226322779044,
+            52.34740402032284
+          ],
+          [
+            5.177041679090877,
+            52.34286438088503
+          ]
+        ],
+        "type": "LineString"
+      }
+    }
+  ]
+}
+  ]
+}
+L.geoJSON(myGeojson).addTo(map);
+
+      // ADD a WMS layer
+      var wmsLayer = L.tileLayer
+        .wms("http://ows.mundialis.de/services/service?", {
+          layers: "Dark"
+        })
+        .addTo(map);
+    </script>
+  </body>
+</html>
